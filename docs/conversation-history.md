@@ -8,7 +8,7 @@ Below is a clean, consolidated **Markdown export** containing the updated produc
 
 ## Overview
 
-A mobile-friendly web platform enabling VTuber content creators to schedule livestreams and enabling fans (content consumers) to follow schedules across YouTube and Twitch.
+A mobile-friendly web platform enabling VTuber content creators to schedule livestreams and enabling fans (content consumers) to follow schedules across YouTube, Twitch, and X/Twitter.
 
 ---
 
@@ -19,10 +19,12 @@ A mobile-friendly web platform enabling VTuber content creators to schedule live
 Creators use the platform to:
 
 * Schedule livestreams manually.
-* Import livestreams automatically via OAuth with YouTube/Twitch.
+* Import scheduled livestreams automatically via OAuth with YouTube/Twitch.
 * Edit, update, and manage stream metadata.
 * Publish a sharable schedule page for their audience.
+* Publish schedule "posters" (GIF, JPEG images) to X/Twitter, YouTube, and Twitch (optional post-MVP).
 * Track engagement metrics (optional post-MVP).
+* Automatically read schedule information from creator-uploaded "poster" GIFs and JPEGs (optional post-MVP).
 
 ### 2. Content Consumers
 
@@ -33,6 +35,7 @@ Fans use the platform to:
 * View upcoming livestream schedules across platforms.
 * Receive browser push or email notifications.
 * Maintain a personalized watchlist and schedule view.
+* Automatically read schedule information from "poster" GIFs and JPEGs on X/Twitter (optional post-MVP).
 
 ---
 
@@ -40,9 +43,9 @@ Fans use the platform to:
 
 ### Creator-Facing Features
 
-* OAuth with YouTube/Twitch (channel linking + permissions).
+* OAuth with YouTube/Twitch/X/Twitter (channel linking + permissions).
 * Auto-import scheduled livestreams.
-* Manual scheduling tool (title, date, platform, thumbnail).
+* Manual scheduling tool (title, date, platform, thumbnail, "poster" image).
 * Event editing, cancellation, and rescheduling.
 * Creator dashboard with event list and stats.
 * Public schedule page with mobile-first layout.
@@ -71,14 +74,15 @@ Fans use the platform to:
 
 * **Mobile-Friendly Web Client:** Responsive UI, offline-first browsing.
 * **API Gateway / Web Server:** Routing, authentication, rate limiting.
-* **Backend Services:**
+* **Backend Services:** GitHub, Vercel, Supabase.
 
   * User & Creator Service
   * Stream Aggregation Service
   * Creator Scheduling Service
   * Notification & Event Trigger Service
+
 * **Data Layer:** PostgreSQL for persistent data, Redis for cached schedules.
-* **External Integrations:** YouTube Data API v3, Twitch Helix API.
+* **External Integrations:** YouTube Data API v3, Twitch Helix API, X/Twitter API.
 * **Notification Infrastructure:** Email provider, Web Push API.
 * **CI/CD + Cloud Infrastructure:** Automated deployment, monitoring, logs.
 
@@ -112,6 +116,7 @@ B --> C1[User & Creator Service
 B --> C2[Stream Aggregation Service
 - YouTube API Polling
 - Twitch API Polling
+- X/Twitter API Polling
 - Metadata Normalization]
 B --> C3[Creator Scheduling Service
 - Manual Event Creation
